@@ -1,0 +1,109 @@
+---
+import '../assets/menu.css';
+---
+<div class="menu-container">
+    <button id="menu-toggle" class="menu-toggle" aria-label="Toggle Menu">
+        <span class="line"></span>
+        <span class="line"></span>
+    </button>
+
+    <div class="menu-overlay" id="menu-overlay">
+        <nav class="menu-nav">
+            <a href="/" class="menu-link">HOME</a>
+            <a href="/events" class="menu-link">EVENTS</a>
+            <a href="/teams" class="menu-link">TEAMS</a>
+            <a href="/sponsors" class="menu-link">SPONSORS</a>
+        </nav>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggle = document.getElementById('menu-toggle');
+        const overlay = document.getElementById('menu-overlay');
+        const links = document.querySelectorAll('.menu-link');
+        let isOpen = false;
+
+        if (!toggle || !overlay) return;
+
+        const checkGsap = setInterval(() => {
+            if (window.gsap) {
+                clearInterval(checkGsap);
+                initMenu();
+            }
+        }, 100);
+
+        function initMenu() {
+            // Set initial states
+            gsap.set(overlay, { 
+                autoAlpha: 0,
+                scale: 0.85,
+                y: -30,
+                transformOrigin: "top right"
+            });
+
+            gsap.set(links, { 
+                opacity: 0,
+                x: 30,
+                rotationY: 20
+            });
+
+            // Create timeline for smooth reverse
+            function createTimeline() {
+                const tl = gsap.timeline({ paused: true });
+                
+                // Overlay entrance with scale and position
+                tl.to(overlay, {
+                    duration: 0.5,
+                    autoAlpha: 1,
+                    scale: 1,
+                    y: 0,
+                    ease: "power3.out"
+                }, 0);
+
+                // Links with 3D rotation and stagger
+                tl.to(links, {
+                    opacity: 1,
+                    x: 0,
+                    rotationY: 0,
+                    duration: 0.4,
+                    stagger: 0.06,
+                    ease: "back.out(1.4)"
+                }, 0.15);
+
+                return tl;
+            }
+
+            const timeline = createTimeline();
+
+            toggle.addEventListener('click', () => {
+                isOpen = !isOpen;
+                toggle.classList.toggle('active');
+
+                if (isOpen) {
+                    timeline.timeScale(1).play();
+                } else {
+                    timeline.timeScale(1.3).reverse();
+                }
+            });
+
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (isOpen) {
+                        isOpen = false;
+                        toggle.classList.remove('active');
+                        timeline.timeScale(1.3).reverse();
+                    }
+                });
+            });
+            
+            document.addEventListener('click', (e) => {
+                if (isOpen && !overlay.contains(e.target as Node) && !toggle.contains(e.target as Node)) {
+                    isOpen = false;
+                    toggle.classList.remove('active');
+                    timeline.timeScale(1.3).reverse();
+                }
+            });
+        }
+    });
+</script>
