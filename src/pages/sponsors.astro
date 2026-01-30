@@ -111,8 +111,22 @@ const sponsors = [
   .sponsors-page {
     position: relative;
     min-height: 100vh;
-    background: radial-gradient(ellipse at bottom, #1a0033 0%, #000000 100%);
+    background: linear-gradient(300deg, #0f021a, #1a0033, #0a0a0f, #220022);
+    background-size: 240% 240%;
+    animation: gradient-animation 15s ease infinite;
     overflow-x: hidden;
+  }
+
+  @keyframes gradient-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 
   /* === Stars Background === */
@@ -199,14 +213,17 @@ const sponsors = [
   /* === Sponsor Card === */
   .sponsor-card {
     position: relative;
-    background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 245, 255, 0.8) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 16px;
     padding: 24px 20px;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 
+      0 10px 30px -10px rgba(0, 0, 0, 0.3),
+      inset 0 0 20px rgba(255, 255, 255, 0.5);
     display: flex;
     flex-direction: column;
     align-items: center;
