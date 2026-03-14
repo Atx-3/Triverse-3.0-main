@@ -1,7 +1,10 @@
 ---
 import { Image } from 'astro:assets';
 import teamData from '../data/team-details.json';
+<<<<<<< HEAD
 import galaxyImage from '../images/galaxy.png';
+=======
+>>>>>>> upstream/main
 
 interface Props {
   teamName: string;
@@ -9,14 +12,23 @@ interface Props {
 
 const { teamName } = Astro.props;
 
+<<<<<<< HEAD
 const team = teamData.teams.find(
   t => t.name.toLowerCase() === teamName.toLowerCase()
 );
+=======
+const normalizeTeamName = (value: string | undefined | null) =>
+  value?.trim().toLowerCase() ?? '';
+
+const normalizedTeamName = normalizeTeamName(teamName);
+const team = teamData.teams.find(t => normalizeTeamName(t.name) === normalizedTeamName);
+>>>>>>> upstream/main
 
 if (!team) {
   console.error(`Team "${teamName}" not found`);
 }
 
+<<<<<<< HEAD
 // 🔥 exception handling (ONLY addition)
 const hasCoLead = Boolean(team?.colead);
 
@@ -32,10 +44,25 @@ function resolveImage(path: string | undefined | null) {
   // Construct full path
   const fullPath = `/src/images${cleanPath}`;
   
+=======
+const hasCoLead = Boolean(team?.colead);
+const isOfficeBearerTeam = team?.name.toLowerCase() === 'office bearer';
+
+const teamImages = import.meta.glob<{ default: ImageMetadata }>('/src/images/team/**/*.{png,jpg,jpeg,webp,PNG,JPG,JPEG,WEBP}', { eager: true });
+
+function resolveImage(path: string | undefined | null) {
+  if (!path) return null;
+
+  const normalizedPath = path.replace(/\\/g, '/');
+  const cleanPath = normalizedPath.startsWith('/') ? normalizedPath : '/' + normalizedPath;
+  const fullPath = `/src/images${cleanPath}`;
+
+>>>>>>> upstream/main
   const imageModule = teamImages[fullPath];
   return imageModule ? imageModule.default : null;
 }
 
+<<<<<<< HEAD
 const leadImage = resolveImage(team?.lead?.image);
 const coleadImage = hasCoLead ? resolveImage(team?.colead?.image) : null;
 ---
@@ -97,10 +124,71 @@ const coleadImage = hasCoLead ? resolveImage(team?.colead?.image) : null;
         )})}
       </div>
     )}
+=======
+type PersonCard = {
+  name: string;
+  role: string;
+  image?: string | null;
+  heading: 'h3' | 'h4';
+};
+
+const people: PersonCard[] = team
+  ? [
+      { ...team.lead, heading: 'h3' as const },
+      ...(hasCoLead ? [{ ...team.colead, heading: 'h3' as const }] : []),
+      ...team.members.map(member => ({ ...member, heading: 'h4' as const })),
+    ]
+  : [];
+---
+
+{team && (
+  <section class="team-section">
+
+    <div class="members-grid" class:list={isOfficeBearerTeam ? 'office-bearer-layout' : ''}>
+      {people.map(person => {
+        const personImage = resolveImage(person.image);
+        const HeadingTag = person.heading;
+
+        const infoContent = (
+          <>
+            <HeadingTag>{person.name}</HeadingTag>
+            <p>{person.role}</p>
+          </>
+        );
+
+        return (
+          <div class="member-card reveal">
+            <div class="avatar-wrap member-avatar">
+
+              {personImage ? (
+                <Image
+                  src={personImage}
+                  alt={person.name}
+                  class="team-img"
+                  draggable="false"
+                  loading="lazy"
+                />
+              ) : (
+                <div class="placeholder-img"></div>
+              )}
+
+              <!-- PROTECTION OVERLAY -->
+              <div class="img-protect"></div>
+
+              <div class="info">{infoContent}</div>
+              <div class="info info-hover">{infoContent}</div>
+
+            </div>
+          </div>
+        );
+      })}
+    </div>
+>>>>>>> upstream/main
 
   </section>
 )}
 
+<<<<<<< HEAD
 <style>
 /* ---------- SECTION ---------- */
 .team-section {
@@ -125,10 +213,82 @@ const coleadImage = hasCoLead ? resolveImage(team?.colead?.image) : null;
   background-repeat: no-repeat;
 
   border: 3px solid white;
+=======
+<script>
+  const revealCards = () => {
+    const cards = document.querySelectorAll('.member-card.reveal');
+
+    if (!('IntersectionObserver' in window)) {
+      cards.forEach(card => card.classList.add('is-visible'));
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          } else {
+            entry.target.classList.remove('is-visible');
+          }
+        });
+      },
+      { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.2 }
+    );
+
+    cards.forEach(card => observer.observe(card));
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', revealCards);
+  } else {
+    revealCards();
+  }
+
+  /* Disable right click on images */
+  document.addEventListener("contextmenu", function(e) {
+    if (e.target.closest(".avatar-wrap")) {
+      e.preventDefault();
+    }
+  });
+
+  /* Extra drag protection */
+  document.querySelectorAll(".team-img").forEach(img => {
+    img.addEventListener("dragstart", e => e.preventDefault());
+  });
+</script>
+
+<style>
+
+/* ---------- SECTION ---------- */
+
+.team-section {
+  max-width: 1100px;
+  margin: 0rem auto 0;
+  padding: 0 1rem;
+}
+
+/* ---------- AVATAR ---------- */
+
+.avatar-wrap {
+  position: relative;
+  width: 240px;
+  height: 320px;
+  overflow: hidden;
+
+  background: linear-gradient(
+    180deg,
+    rgba(15, 5, 20, 0.3) 0%,
+    rgba(30, 15, 45, 0.5) 30%,
+    rgba(60, 20, 100, 0.85) 60%,
+    rgba(100, 40, 160, 0.9) 100%
+  );
+>>>>>>> upstream/main
 
   display: flex;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
 }
 
 /* ---------- STICKER IMAGE ---------- */
@@ -184,24 +344,128 @@ const coleadImage = hasCoLead ? resolveImage(team?.colead?.image) : null;
 .members-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+=======
+
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(100, 50, 200, 0.1);
+}
+
+/* ---------- IMAGE ---------- */
+
+.team-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  border-radius: 6px;
+  user-select: none;
+}
+
+/* ---------- IMAGE PROTECTION LAYER ---------- */
+
+.img-protect {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: transparent;
+}
+
+/* ---------- INFO ---------- */
+
+.avatar-wrap .info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  padding: 20px 15px 15px;
+
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0,0,0,0.5) 50%,
+    rgba(0,0,0,0.85) 100%
+  );
+
+  z-index: 3;
+  text-align: center;
+}
+
+.avatar-wrap .info h3,
+.avatar-wrap .info h4 {
+  margin: 0 0 5px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.avatar-wrap .info p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+/* ---------- HOVER ---------- */
+
+.avatar-wrap:hover .team-img {
+  transform: scale(1.02);
+}
+
+.avatar-wrap:hover .info:not(.info-hover) {
+  opacity: 0;
+}
+
+.avatar-wrap .info-hover {
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0,0,0,0.6);
+
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+.avatar-wrap:hover .info-hover {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- GRID (UNCHANGED) ---------- */
+
+.members-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+>>>>>>> upstream/main
   gap: 1.2rem;
   margin-top: 0.5rem;
   justify-items: center;
 }
 
 /* ---------- MEMBER CARD ---------- */
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/main
 .member-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+<<<<<<< HEAD
   transition: transform 0.3s ease;
+=======
+>>>>>>> upstream/main
 }
 
 .member-card:hover {
   transform: translateY(-10px);
 }
 
+<<<<<<< HEAD
 .member-avatar {
   margin-bottom: 0.45rem;
 }
@@ -232,6 +496,27 @@ const coleadImage = hasCoLead ? resolveImage(team?.colead?.image) : null;
   .lead-row.right {
     flex-direction: column-reverse;
     margin-bottom: 2.5rem;
+=======
+/* ---------- SCROLL REVEAL ---------- */
+
+.member-card.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.member-card.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 941px) {
+
+  .members-grid {
+    grid-template-columns: 1fr;
+>>>>>>> upstream/main
   }
 
   .avatar-wrap {
@@ -239,6 +524,7 @@ const coleadImage = hasCoLead ? resolveImage(team?.colead?.image) : null;
     height: 150px;
   }
 
+<<<<<<< HEAD
   .lead-avatar {
     margin-top: 2.2rem;
     margin-bottom: 0.15rem;
@@ -261,3 +547,21 @@ const coleadImage = hasCoLead ? resolveImage(team?.colead?.image) : null;
   }
 }
 </style>
+=======
+  .avatar-wrap .info {
+    padding: 10px 8px 8px;
+  }
+
+  .avatar-wrap .info h3,
+  .avatar-wrap .info h4 {
+    font-size: .95rem;
+  }
+
+  .avatar-wrap .info p {
+    font-size: .75rem;
+  }
+
+}
+
+</style>
+>>>>>>> upstream/main

@@ -11,7 +11,19 @@ body {
   overflow-x: hidden;
   max-width: 100vw;
 }
+<<<<<<< HEAD
 
+=======
+.footer * {
+  pointer-events: auto;
+}
+
+.footer-bg-pattern,
+.footer-logo-watermark,
+#footer::before {
+  pointer-events: none !important;
+}
+>>>>>>> upstream/main
 .footer {
   width: 100%;
   max-width: 100vw;
@@ -27,8 +39,53 @@ body {
   left: 0;
   right: 0;
 }
+<<<<<<< HEAD
 
 
+=======
+/* background container */
+.footer-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* behaves like background-image */
+.footer-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* like background-size: cover */
+  object-position: bottom; /* adjust like background-position */
+  transform: scaleY(-1);
+  filter: blur(10px);
+  opacity: 0.9;
+  object-position: center 90%;
+}
+
+/* content stays on top */
+.footer-content {
+  position: relative;
+  z-index: 1;
+}
+#footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: var(--arc-bg);
+  background-size: cover;
+  background-position: center 90%;
+  background-repeat: no-repeat;
+
+  transform: scaleY(-1);
+  transform-origin: center;
+  filter: blur(15px);
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 0;
+}
+>>>>>>> upstream/main
 
 /* Background Pattern */
 .footer-bg-pattern {
@@ -60,6 +117,10 @@ body {
   display: block;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> upstream/main
 .footer-logo-watermark img {
   width: 100%;
   height: auto;
@@ -69,6 +130,10 @@ body {
   display: block;
   transform: translateY(40%);
   filter: brightness(1.5);
+<<<<<<< HEAD
+=======
+  pointer-events: none;
+>>>>>>> upstream/main
 }
 
 /* Decorative + signs */
@@ -289,7 +354,11 @@ body {
 }
 
 .made-by-label {
+<<<<<<< HEAD
   font-size: 0.75rem;
+=======
+  font-size: 0.6rem;
+>>>>>>> upstream/main
   color: var(--footer-text-secondary);
   text-transform: uppercase;
   letter-spacing: 1.5px;
@@ -300,16 +369,30 @@ body {
   display: flex;
   flex-wrap: nowrap;
   justify-content: flex-end;
+<<<<<<< HEAD
   gap: 0.6rem;
   align-items: center;
 }
 
+=======
+  gap: 0.2rem;
+  align-items: center;
+}
+
+.team-member-name {
+  font-size: 0.4rem;
+}
+>>>>>>> upstream/main
 .team-member {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.25rem;
+<<<<<<< HEAD
   transition: transform 0.3s ease;
+=======
+  transition: transform 0.15s ease;
+>>>>>>> upstream/main
 }
 
 .team-member:hover {
@@ -320,8 +403,12 @@ body {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+<<<<<<< HEAD
   background: linear-gradient(135deg, rgba(138, 43, 226, 0.3), rgba(186, 85, 211, 0.3));
   border: 2px solid rgba(255, 255, 255, 0.2);
+=======
+  border: 1px solid rgba(255, 255, 255, 0.2);
+>>>>>>> upstream/main
   display: flex;
   align-items: center;
   justify-content: center;
