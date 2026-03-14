@@ -111,23 +111,8 @@ const sponsors = [
   .sponsors-page {
     position: relative;
     min-height: 100vh;
-    /* Rich, live moving gradient */
-    background: linear-gradient(-45deg, #0a0a0f, #1a0033, #3c1e55, #220022, #0f021a);
-    background-size: 400% 400%;
-    animation: liveGradient 12s ease infinite;
+    background: radial-gradient(ellipse at bottom, #1a0033 0%, #000000 100%);
     overflow-x: hidden;
-  }
-
-  @keyframes liveGradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
   }
 
   /* === Stars Background === */
@@ -214,65 +199,64 @@ const sponsors = [
   /* === Sponsor Card === */
   .sponsor-card {
     position: relative;
-    background: #000000;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 16px;
-    padding: 30px 20px;
+    padding: 24px 20px;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 20px;
+    gap: 12px;
   }
 
   .sponsor-card:hover {
-    transform: scale(1.05);
-    border-color: rgba(138, 43, 226, 0.5);
-    box-shadow: 0 20px 50px rgba(138, 43, 226, 0.15);
+    transform: scale(1.08);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
     z-index: 10;
   }
 
   /* === Logo Container === */
   .logo-container {
     width: 100%;
-    height: 120px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0;
-    background: transparent;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 12px;
     transition: all 0.4s ease;
   }
 
   .logo-container img {
-    max-width: 90%;
-    max-height: 90px;
+    max-width: 85%;
+    max-height: 75px;
     object-fit: contain;
     transition: all 0.4s ease;
-    filter: brightness(1.2); /* Make logos pop on black */
   }
 
   .sponsor-card:hover .logo-container {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.8);
   }
 
   /* === Sponsor Name === */
   .sponsor-name {
-    font-size: 1.1rem;
+    font-size: 0.95rem;
     font-weight: 600;
-    color: #ffffff;
+    color: #1a1a2e;
     margin: 0;
     transition: all 0.4s ease;
   }
 
   .sponsor-card:hover .sponsor-name {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(-10px);
   }
 
   /* === Hover Overlay === */
