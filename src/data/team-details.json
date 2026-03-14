@@ -10,13 +10,23 @@
       "colead": {
         "name": "Manya Chaubey",
         "role": "Vice Chairperson",
-        "image": "/team/office-bearer/Manya_Chaudhray.png"
+        "image": "\\team\\office-bearer\\manya.png"
       },
       "members": [
+        {
+          "name": "Satvik",
+          "role": "Treasurer",
+          "image": "\\team\\office-bearer\\Satvik.png"
+        },
+         {
+          "name": "Ayush Anand",
+          "role": "General secretary",
+          "image": "\\team\\office-bearer\\Ayush.png"
+        },
          {
           "name": "Rishabh Verma",
           "role": "Web Master",
-          "image": "/team/office-bearer/Rishabh_Verma.png"
+          "image": "\\team\\office-bearer\\Rishabh_Verma.png"
         }
       ]
     },
@@ -33,7 +43,6 @@
         "image": "/team/tech/gyanendra.png"
       },
       "members": [
-        
         {
           "name": "Saksham Yadav",
           "role": "Core Member",
@@ -59,14 +68,14 @@
     {
       "name": "Content team",
       "lead": {
-        "name": "_",
+        "name": "Venugopal Chepuri",
         "role": "Team Lead",
-        "image": ""
+        "image": "\\team\\Content\\venugopal_Chepuri.png"
       },
       "colead": {
-        "name": "_",
+        "name": "Krishna Gaur",
         "role": "Co-Lead",
-        "image": ""
+        "image": "\\team\\Content\\krishna_Gaur.png"
       },
       "members": [
         {
@@ -93,12 +102,12 @@
     },{
       "name": "Design Team",
       "lead": {
-        "name": "-",
+        "name": "Amogh Sharma",
         "role": "Team Lead",
-        "image": ""
+        "image": "\\team\\Placeholder.png"
       },
       "colead": {
-        "name": "Apoorv_Verma",
+        "name": "Apoorv Verma",
         "role": "Co-Lead",
         "image": "\\team\\Design\\Apoorv_Verma.png"
       },
@@ -107,14 +116,24 @@
           "name": "Nandani Khandelwa",
           "role": "Core Member",
           "image": "\\team\\Design\\nandani_khandelwal.png"
+        },
+        {
+          "name": "Astitva Agarwal",
+          "role": "Core Member",
+          "image": "\\team\\Placeholder.png"
+        },
+        {
+          "name": "Illyas",
+          "role": "Core Member",
+          "image": "\\team\\Placeholder.png"
         }
       ]
     },{
       "name": "Pr and Outreach Team ",
       "lead": {
-        "name": "-",
+        "name": "Shreyasi Doshi",
         "role": "Team Lead",
-        "image": ""
+        "image": "\\team\\PRandOutreach\\Shreyasi Doshi.png"
       },
       "colead": {
         "name": "Arpita_Arora",
@@ -151,9 +170,14 @@
     },{
       "name": "Management Team",
       "lead": {
-        "name": "-",
-        "role": "Team Lead",
-        "image": ""
+        "name": "Atharv Krishna",
+        "role": "Management Head",
+        "image": "\\team\\Management\\Atharv_Krishna.png"
+      },
+      "colead": {
+        "name": "Saharsh jaishwal",
+        "role": "Logistics Head",
+        "image": "\\team\\Management\\Saharsh_jaishwal.png"
       },
       "members": [
         {
@@ -205,14 +229,19 @@
           "name": "Sivant Raj",
           "role": "Core Member",
           "image": "\\team\\Management\\Sivant_Raj.png"
+        },
+        {
+          "name": "Vaishnavi Awasthi",
+          "role": "Core Member",
+          "image": "\\team\\Management\\vaishnavi.PNG"
         }
       ]
     },{
       "name": "Multimedia team",
       "lead": {
-        "name": "-",
+        "name": "Athrav",
         "role": "Team Lead",
-        "image": ""
+        "image": "\\team\\Media\\athrav.png"
       },
       "colead": {
         "name": "Sanskriti Chaudhary",
@@ -221,53 +250,29 @@
       },
       "members": [
         {
-          "name": "-",
+          "name": "Ashrith Jangam",
           "role": "Core Member",
-          "image": ""
+          "image": "\\team\\Media\\Ashrith_Jangam.png"
         },
         {
-          "name": "-",
+          "name": "Sagar Yadav",
           "role": "Core Member",
-          "image": ""
+          "image": "\\team\\Media\\Sagar_yadav.png"
         }
       ]
     },{
       "name": "Social Media Team",
       "lead": {
-        "name": "-",
+        "name": "Gaurika",
         "role": "Team Lead",
-        "image": ""
+        "image": "\\team\\Media\\gaurika.PNG"
       },
       "colead": {
-        "name": "-",
+        "name": "Vansh Singhal",
         "role": "Co-Lead",
-        "image": ""
+        "image": "\\team\\Media\\vansh.png"
       },
       "members": [
-        {
-          "name": "-",
-          "role": "Core Member",
-          "image": ""
-        }
-      ]
-    },{
-      "name": "logistics team",
-      "lead": {
-        "name": "-",
-        "role": "Team Lead",
-        "image": ""
-      },
-      "colead": {
-        "name": "-",
-        "role": "Co-Lead",
-        "image": ""
-      },
-      "members": [
-        {
-          "name": "-",
-          "role": "Core Member",
-          "image": ""
-        }
       ]
     },{
       "name": "research team",
@@ -286,6 +291,16 @@
           "name": "Dhaanvee Mathur",
           "role": "Core Member",
           "image": "\\team\\Research\\Dhaanvee_mathur.png"
+        },
+        {
+          "name": "Tanmay Sahai",
+          "role": "Core Member",
+          "image": "\\team\\Placeholder.png"
+        },
+        {
+          "name": "Maahi",
+          "role": "Core Member",
+          "image": "\\team\\Placeholder.png"
         }
       ]
     }
